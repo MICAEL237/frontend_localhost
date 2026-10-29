@@ -2,9 +2,10 @@ import type { RegisterType } from "../schemas/register.schema"
 
 const RegisterApi = async (data: RegisterType): Promise<RegisterType> => {
 
-    const res = await fetch('http://localhost:5500/api/v1/users/', {
+    const res = await fetch('http://localhost:5500/api/v1/auth', {
         method: "POST",
         body: JSON.stringify(data),
+        credentials: "include",
         headers: {
             "Content-Type": "application/json"
         }

@@ -6,6 +6,7 @@ const LoginApi = async (data: LoginType): Promise<string> =>{
         {
             method:"POST",
             body: JSON.stringify(data),
+            credentials: "include",
             headers:{
                 "Content-Type": "application/json"
             }
@@ -15,7 +16,7 @@ const LoginApi = async (data: LoginType): Promise<string> =>{
     )
 
      const token  = await response.json()
-        return token
+        return token.success
 
 }
 

@@ -16,26 +16,25 @@ const LoginForm = () => {
   });
 
   const Onsubmit = async (data: LoginType) => {
-    console.log("Ca marche");
     const Apiresponse = await LoginApi(data);
     console.log(Apiresponse);
 
-    if (Apiresponse) {
-      navigate("/Home");
-      return <h1></h1>;
-    }
-
+    if(Apiresponse) {
+      navigate("/DasboardUser");
+    }else{
+      
     return (
       <div className="toast toast-top toast-center">
-        <div className="alert alert-info">
-          <span>New mail arrived.</span>
-        </div>
-        <div className="alert alert-success">
-          <span>Message sent successfully.</span>
+        <div className="alert alert-warning">
+          <span>Identifiants Invalident</span>
         </div>
       </div>
     );
   };
+
+    }
+
+
 
   return (
     <div className="w-screen h-screen flex items-center  justify-center">

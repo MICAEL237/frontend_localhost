@@ -6,6 +6,7 @@ export const RegisterSchema = z.object({
     password: z.string().min(8, "Le mot de passe dois avoir minimum 8 caracteres"),
     email: z.email("Veuillez mentionner votre email"),
     tel: z.string().min(9, "Le numero de telephone doit avoir au moin 9 caracteres"),
+    communeId: z.string("mentionner votre commune")
 })
 
 export type RegisterType = z.infer<typeof RegisterSchema> 

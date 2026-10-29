@@ -1,11 +1,12 @@
 import { Outlet } from "react-router";
 import House from "../../../../public/house-svgrepo-com.svg";
 import shieldCheck from  "../../../../public/shield-check-svgrepo-com.svg";
+// import Footer from "./Footer";
 
 
 const NavBar = () => {
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative w-screen h-screen">
       <div className="navbar bg-base-100 shadow-sm sm:px-2 lg:px-16 w-full fixed gap-12 ">
       <div className="flex-1 w-full">
         {/* <a className="btn btn-ghost text-xl"></a> */}
@@ -27,8 +28,12 @@ const NavBar = () => {
 
       
     </div>
-    <Outlet/>
+   <div>
+     <Outlet/>
+   </div>
+
     </div>
+
   );
 };
 
