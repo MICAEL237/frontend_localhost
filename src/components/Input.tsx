@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-type Type = "password" | "text";
+type Type = "password" | "text" | "file"| "number";
 
 type Input = {
   type: Type;
@@ -9,13 +9,16 @@ type Input = {
   label?: string;
   ClassName?: string;
   error?: string | undefined;
+  valeur?: string | number
+  // onchange?: st
 };
 
 const Input = ({
   type,
   placeHolder,
   label,
-  // ClassName,
+  valeur,
+  ClassName,
   error,
   ...props
 }: Input) => {
@@ -25,13 +28,15 @@ const Input = ({
 const [MotPasse, setMotPasse] = useState<boolean>(false);
 const VoirMotPasse = () => setMotPasse(!MotPasse);
   return (
-    <div className="flex flex-col gap-1 items-start justify-center w-full">
-      <label htmlFor="" className="text-xl  px-2"> {label} </label>
+    <div className="flex flex-col px-4 gap-1 items-start justify-center w-full ">
+      <label htmlFor="" className="label"> {label} </label>
       <input
       
-        type={type === "password" && !MotPasse ? "password" : "text"}
+        type={type}
         placeholder={placeHolder}
-        className={`w-full h-12 rounded-xl outline-0 text-[10px] focus:(border-emerald-600) bg-[#f8fafc] px-12 `}
+        value={valeur}
+        // onChange={onchange}
+        className={`w-full h-12 p-4 input input-accent ${ClassName}`}
         {...props }
       />
 
@@ -52,7 +57,7 @@ const VoirMotPasse = () => setMotPasse(!MotPasse);
       )}
     </div>
 
-      <span className="text-xl text-red-500 px-2"> {error} </span>
+      <span className="text-[10px] text-red-500 px-2 opacity-65"> {error} </span>
     </div>
   );
 };

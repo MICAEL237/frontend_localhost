@@ -5,15 +5,21 @@ import { Link } from "react-router";
 import handBye from "../../../../public/téléchargement.webp";
 import MapIcon from "../../../../public/téléchargement.jpg";
 import arrow from "../../../../public/arrow-right-svgrepo-com.svg";
+// import { userStore } from "../../../stores/user.store";
 
 const DasboardUser = () => {
   const [User, setUser] = useState<UseType>();
+  // const userstore = userStore((state) => state.setUser)
 
   const Currentuser = async () => {
     const user = await CurrentUser();
 
     setUser(user.user);
+    // userstore(user.user)
   };
+  
+
+
 
   useEffect(() => {
     const affiche = async () => {
@@ -58,7 +64,7 @@ const DasboardUser = () => {
           </h2>
         </div>
         
-        <Link to="" className="flex items-center gap-4 w-100 h-12 rounded-xl pl-4 bg-[#15803d] text-[18px]"><span><img src={MapIcon} alt="" className="w-8 h-8" /></span>Signaler un probleme dans ma ville <span><img src={arrow} className="w-8 h-8" /></span> </Link>
+        <Link to="/createsign" className="flex items-center gap-4 w-100 h-12 rounded-xl pl-4 bg-[#15803d] text-[18px]"><span><img src={MapIcon} alt="" className="w-8 h-8" /></span>Signaler un probleme dans ma ville <span><img src={arrow} className="w-8 h-8" /></span> </Link>
         
       </div>
     </div>

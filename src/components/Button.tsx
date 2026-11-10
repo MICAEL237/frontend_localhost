@@ -7,9 +7,9 @@ type button = {
   isLoading?: boolean;
 };
 
-const Button = ({ label, type, isLoading, className }: button) => {
+const Button = ({ label, type, isLoading}: button) => {
   return (
-    <button type={type} className={`w-full h-12 rounded-2xl outline-0 text-2xl bg-[#166534] font-semibold text-white px-20 cursor-pointer ${className}`}>
+    <button type={type} className={`w-full h-12  btn btn-soft btn-success`}>
       {isLoading ? "chargement..." : label}
     </button>
   );

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import shieldCheck from "../../../../public/shield-check-svgrepo-com.svg";
-import { Key, Mail } from "lucide-react";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -19,22 +18,18 @@ const LoginForm = () => {
     const Apiresponse = await LoginApi(data);
     console.log(Apiresponse);
 
-    if(Apiresponse) {
+    if (Apiresponse) {
       navigate("/DasboardUser");
-    }else{
-      
-    return (
-      <div className="toast toast-top toast-center">
-        <div className="alert alert-warning">
-          <span>Identifiants Invalident</span>
+    } else {
+      return (
+        <div className="toast toast-top toast-center">
+          <div className="alert alert-warning">
+            <span>Identifiants Invalident</span>
+          </div>
         </div>
-      </div>
-    );
-  };
-
+      );
     }
-
-
+  };
 
   return (
     <div className="w-screen h-screen flex items-center  justify-center">
@@ -61,10 +56,10 @@ const LoginForm = () => {
           </div>
         </div>
         <form
-          className="w-150 max-sm:w-100 h-100 gap-12  shadow-sm flex items-center justify-center flex-col p-10 rounded-r-2xl bg-[#ffffff]"
+          className="w-150 max-sm:w-100 h-100 gap-8  shadow-sm flex items-center justify-center flex-col p-10 rounded-r-2xl bg-[#ffffff]"
           onSubmit={handleSubmit(Onsubmit)}
         >
-          <div className="w-120  max-sm:w-100 flex flex-col gap-2">
+          <div className="w-120 px-4 max-sm:w-100 flex flex-col items-start gap-2">
             <h1 className="text-3xl font-extrabold text-[#0f172a]">
               Connexion
             </h1>
@@ -74,7 +69,6 @@ const LoginForm = () => {
           </div>
           <div className="w-120  max-sm:w-100 flex flex-col gap-4 ">
             <div className="w-120 max-sm:w-100 relative">
-              <Mail className="absolute top-11 left-2"/>
               <Input
                 type="text"
                 placeHolder="Entrer votre email"
@@ -84,7 +78,6 @@ const LoginForm = () => {
               />
             </div>
             <div className="w-120 max-sm:w-100 relative ">
-              <Key className="absolute top-11 left-2"/>
               <Input
                 type="password"
                 placeHolder="Entrer votre mot de passe"
@@ -93,7 +86,10 @@ const LoginForm = () => {
                 error={formState.errors.password?.message}
               />
             </div>
-            <Button type="submit" label="Se connecter" />
+
+            <div className="w-120 max-sm:w-100 relative px-4">
+              <Button type="submit" label="Se connecter" />
+            </div>
           </div>
         </form>
       </div>

@@ -19,31 +19,35 @@ const LoginFormData = () => {
     resolver: zodResolver(RegisterSchema),
   });
 
-  const Commune = async () => {
-    const commune = await ListCommune();
-    if (commune) {
-      setCommune(commune);
-    }
-  };
+  // const Commune = async () => {
+  //   const commune = await ListCommune();
+  //   if (commune) {
+  //     setCommune(commune);
+  //   }
+  // };
 
   useEffect(() => {
+    const Commune = async () => {
+      const commune = await ListCommune();
+      if (commune) {
+        setCommune(commune);
+      }
+    };
     Commune();
   }, []);
 
-  if(!commune){
-    return
+  if (!commune) {
+    return;
   }
-
-
 
   const OnSubmit = async (data: RegisterType) => {
     try {
       console.log(data);
       setLoding(true);
       const apiResponse = await RegisterApi(data);
-      if(apiResponse){
-      navigate("/Login");
-    }
+      if (apiResponse) {
+        navigate("/Login");
+      }
     } catch (error) {
       console.log("echec register", error);
     }
@@ -51,7 +55,7 @@ const LoginFormData = () => {
 
   return (
     <div className="self-center w-screen h-screen  flex items-center justify-center">
-      <div className="flex max-sm:flex-col  items-center self-center justify-center  w-350 h-150">
+      <div className="flex max-sm:flex-col  items-center  justify-center  w-350 h-150">
         <div className="w-130  mt-12  h-full max-sm:mt-24 max-sm:hidden sm:rounded-t-2xl  bg-[#1e293b] p-5 lg:rounded-l-2xl  bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem]  shadow-sm  flex items-center justify-center flex-col ">
           <h1>.</h1>
           <div className="flex flex-col justify-between h-full pt-24">
@@ -79,24 +83,26 @@ const LoginFormData = () => {
           className="flex flex-col gap-2 px-4 rounded-r-2xl mt-12  items-start self-center justify-center shadow-sm w-120 h-full bg-[F0F0F0]"
         >
           <div className="flex justify-between w-full my-2.5">
-            <div className="flex gap-1 items-center justify-center">
+            <div className="flex gap-1 px-4 items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-[#4ade80] "></div>
               <h1 className=" text-[#4ade80] text-[10px] text-center">
                 INSCRIPTION UNIQUE
               </h1>
             </div>
-            <div className="flex gap-1 items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-[#4ade80] "></div>
+            <div className="flex gap-1 px-4 items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-[#4ade80]"></div>
               <h1 className=" text-[#1e293b] text-[10px] text-center">
                 SERVEUR SECURISE
               </h1>
             </div>
           </div>
-          <h1 className="text-2xl pb-3 font-black leading-1.5 mt-1.5">
-            Céer votre compte citoyen{" "}
-          </h1>
-          <div className="flex  gap-2 items-start justify-center w-full">
-            <div className="w-full relative">
+          <div className="w-full flex   items-center justify-center">
+            <h1 className="text-2xl text-center  pb-3 font-black leading-1.5 mt-1.5">
+              Céer votre compte citoyen{" "}
+            </h1>
+          </div>
+          <div className="flex   items-start justify-center w-full">
+            <div className="w-2/5 relative">
               <Input
                 placeHolder="Entrer votre nom"
                 type="text"
@@ -106,7 +112,7 @@ const LoginFormData = () => {
               />
             </div>
 
-            <div className="w-full relative">
+            <div className="w-3/5 relative">
               <Input
                 placeHolder="Entrer votre Prenom"
                 type="text"
@@ -143,15 +149,30 @@ const LoginFormData = () => {
               error={formState.errors.password?.message}
             />
           </div>
-          <div className="w-full">
-            <select {...register("communeId")} className="w-full h-12 rounded-xl outline-0 text-[10px] focus:(border-emerald-600) bg-[#f8fafc] px-12" >
-              <option value="" className="bg-amber-50 rounded-sm text-sm text-[#4ade80]">choisissez votre commune</option>
-              {commune.map((com: CommuneType) =>(
-                <option value={com.id} key={com.id} className="bg-[#1e293b] hover:bg-[F0F0F0] rounded-xl text-sm text-[#4ade80]" >  {com.nom} </option>
+          <div className="w-full px-4">
+            <select
+              {...register("communeId")}
+              className="w-full h-12 select select-accent "
+            >
+              <option
+                value=""
+                className="bg-amber-50 rounded-sm text-sm text-[#4ade80]"
+              >
+                choisissez votre commune
+              </option>
+              {commune.map((com: CommuneType) => (
+                <option
+                  value={com.id}
+                  key={com.id}
+                  className="bg-[#1e293b] hover:bg-[F0F0F0] rounded-xl text-sm text-[#4ade80]"
+                >
+                  {" "}
+                  {com.nom}{" "}
+                </option>
               ))}
             </select>
           </div>
-          <div className="w-full relative">
+          <div className="w-full relative px-4">
             <Button
               type="submit"
               isLoading={Isloding}
