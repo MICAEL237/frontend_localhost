@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router";
-import House from "../../public/WhatsApp Image 2026-11-06 at 11.53.45.jpeg";
+import House from "../../public/eb59cab6-2d75-43b3-8180-20fa112612e8.jpg";
 // import Footer from "./Footer";
 // import Avata
 
@@ -26,7 +26,7 @@ const NavBarUser = () => {
          <Link to="/DasboardUser" className="text-[#64748b]">Mon espace</Link>
         </button>
         <button className="btn btn-square btn-ghost w-34 w-md:w-12 flex gap-4 items-center text-[16px] font-medium ">
-        <Link to="/usercommune" className="text-[#116534]">Mes signalements</Link>
+        <Link to="/mesign" className="text-[#116534]">Mes signalements</Link>
         </button>
 
          <button className="btn btn-square btn-ghost w-24 w-md:w-12 flex gap-4 items-center text-[16px] font-medium  text-[##0f172a]">

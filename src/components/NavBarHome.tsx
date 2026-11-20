@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router";
-import House from "../../public/WhatsApp Image 2026-11-06 at 11.53.45.jpeg";
+import House from "../../public/eb59cab6-2d75-43b3-8180-20fa112612e8.jpg";
 
 const NavBarHome = () => {
   return (

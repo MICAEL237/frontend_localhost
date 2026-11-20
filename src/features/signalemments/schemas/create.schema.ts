@@ -4,6 +4,7 @@ import z from "zod";
 const MAX_FILE_SIZE = 1024 * 1024 * 8
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 export const SchemaSigna = z.object({
+  id: z.string().optional(),
   description: z.string("Description du probleme obligatoire").min(4).max(600),
   lieu: z.string().min(4),
   categorie: z.string("veuillez mentionner une categorie"),

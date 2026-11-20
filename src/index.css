@@ -1,3 +1,6 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -129,5 +132,182 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+
+/* LEAFLET MAP */
+
+#map {
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #e8f5e9;
+}
+
+
+/* MAP TILES */
+
+#map .leaflet-tile {
+  filter: saturate(0.75) contrast(0.95);
+  transition: filter 0.3s ease;
+}
+
+
+/* ZOOM CONTROLS */
+
+#map .leaflet-control-zoom {
+  border: none !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.12) !important;
+}
+
+#map .leaflet-control-zoom a {
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  border: none !important;
+  color: #15803d !important;
+  background: white !important;
+  transition: all 0.2s ease;
+}
+
+#map .leaflet-control-zoom a:hover {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+
+/* ATTRIBUTION */
+
+#map .leaflet-control-attribution {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 6px 0 0 0;
+}
+
+
+/* MARKER SHADOW */
+
+#map .leaflet-marker-icon {
+  filter: drop-shadow(0 4px 5px rgba(21, 128, 61, 0.3));
+}
+
+
+/* POPUP */
+
+.leaflet-popup-content-wrapper {
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12) !important;
+}
+
+.leaflet-popup-content {
+  margin: 14px 18px !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+
+/* HEADER ANIMATION */
+
+.animate-header {
+  animation: headerReveal 0.8s ease-out both;
+}
+
+@keyframes headerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* FORM ANIMATION */
+
+.animate-form {
+  animation: formReveal 0.9s ease-out both;
+}
+
+@keyframes formReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* SIDE PANEL */
+
+.animate-side {
+  animation: sideReveal 1s ease-out both;
+  animation-delay: 0.2s;
+}
+
+@keyframes sideReveal {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* INPUT TRANSITIONS */
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+/* MAP */
+
+.map-container {
+  isolation: isolate;
+  transition: box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+  box-shadow: 0 12px 30px rgba(21, 128, 61, 0.10);
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-header,
+  .animate-form,
+  .animate-side {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

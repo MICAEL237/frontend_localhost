@@ -10,13 +10,14 @@ import PageDashAdmin from "../pages/admin/PageDashboard";
 import Protect from "../guards/admin.guad";
 import HomePage from "../pages/home/Home.page";
 import NavBarHome from "../components/NavBarHome";
+import AssignationPage from "../pages/admin/Assignation";
+import MesSignPage from "../pages/signalemments/Messignalement";
 
 const AppRouter = () => {
   return (
     <Routes>
-
-      <Route element={<NavBarHome/>}>
-          <Route element={<HomePage/>} path="/"></Route>
+      <Route element={<NavBarHome />}>
+        <Route element={<HomePage />} path="/"></Route>
       </Route>
       <Route element={<NavBar />}>
         <Route element={<LoginPage />} path="/Login"></Route>
@@ -26,14 +27,18 @@ const AppRouter = () => {
       <Route element={<NavBarUser />}>
         <Route element={<PageUser />} path="/DasboardUser"></Route>
         <Route element={<SingPageCreate />} path="/createsign"></Route>
+        <Route element={<MesSignPage/>} path="/mesign"></Route>
       </Route>
 
-      <Route element={<Protect/>}>
-        <Route element={<PageDashAdmin/>}>
-        <Route element={<PageDashAdmin/>} path="/admin"></Route>
-        <Route element={<UserPage />} path="/usercommune"> </Route>
-        <Route> </Route>
-      </Route>
+      <Route element={<Protect />}>
+        <Route element={<PageDashAdmin />}>
+          <Route element={<PageUser />} path="/admin"></Route>
+          <Route element={<UserPage />} path="/usercommune">
+  
+          </Route>
+          <Route element={<AssignationPage />} path="/assigner"></Route>
+          <Route> </Route>
+        </Route>
       </Route>
     </Routes>
   );

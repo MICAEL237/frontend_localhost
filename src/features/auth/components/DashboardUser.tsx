@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import CurrentUser from "../services/me.service";
 import type { UseType } from "../schemas/userType";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import handBye from "../../../../public/téléchargement.webp";
 import MapIcon from "../../../../public/téléchargement.jpg";
 import arrow from "../../../../public/arrow-right-svgrepo-com.svg";
 // import { userStore } from "../../../stores/user.store";
 
 const DasboardUser = () => {
+  const nav = useNavigate()
   const [User, setUser] = useState<UseType>();
   // const userstore = userStore((state) => state.setUser)
 
   const Currentuser = async () => {
     const user = await CurrentUser();
+    const userjson = await user.json()
 
-    setUser(user.user);
+    setUser(userjson.user);
     // userstore(user.user)
   };
   
@@ -29,20 +31,12 @@ const DasboardUser = () => {
   }, []);
 
   if (!User) {
-    return (
-      <div className="toast toast-top toast-center">
-        <div className="alert alert-info">
-          <span>Vous n'exister pas</span>
-        </div>
-        {/* <div className="alert alert-success">
-          <span>Message sent successfully.</span>
-        </div> */}
-      </div>
-    );
+    nav("/login")
+   
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-start mt-24 lg:mt-36">
+    <div className="w-full max-h-screen flex flex-col items-center justify-start mt-24 lg:mt-36">
       <div className="flex flex-col items-center justify-center gap-8">
         <div className="flex items-center justify-center gap-2 bg-[#f0fdf4] h-8 w-56 rounded-lg border-[1px] border-[#bbf7d0]">
           <div className="w-2 h-2 bg-[#116534] rounded-full"></div>
